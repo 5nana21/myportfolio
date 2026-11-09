@@ -11,6 +11,7 @@ const dialogRole = projectDialog?.querySelector(".dialog-role");
 const dialogTags = projectDialog?.querySelector(".dialog-tags");
 const dialogHighlights = projectDialog?.querySelector(".dialog-highlights ul");
 const dialogClose = projectDialog?.querySelector(".dialog-close");
+const contactForm = document.querySelector(".contact-form");
 
 const projectDetails = [
   {
@@ -112,3 +113,52 @@ projectDialog?.addEventListener("click", (event) => {
 });
 
 projectDialog?.querySelector(".dialog-contact")?.addEventListener("click", () => projectDialog.close());
+
+contactForm?.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const fields = [
+    { input: contactForm.elements.namedItem("name"), requiredMessage: "이름을 입력해 주세요." },
+    { input: contactForm.elements.namedItem("email"), requiredMessage: "이메일을 입력해 주세요." },
+    { input: contactForm.elements.namedItem("message"), requiredMessage: "메시지를 입력해 주세요." },
+  ];
+  const feedback = contactForm.querySelector(".form-feedback");
+  let firstInvalidField;
+
+  fields.forEach(({ input, requiredMessage }) => {
+    const error = contactForm.querySelector(`#${input.id}-error`);
+    const value = input.value.trim();
+    let message = "";
+
+    if (!value) {
+      message = requiredMessage;
+    } else if (input.type === "email" && input.validity.typeMismatch) {
+      message = "올바른 이메일 주소를 입력해 주세요.";
+    }
+
+    input.setAttribute("aria-invalid", String(Boolean(message)));
+    error.textContent = message;
+
+    if (message && !firstInvalidField) firstInvalidField = input;
+  });
+
+  if (firstInvalidField) {
+    feedback.textContent = "입력 내용을 확인해 주세요.";
+    firstInvalidField.focus();
+    return;
+  }
+
+  feedback.textContent = "입력값이 모두 올바릅니다. 실제 이메일은 전송되지 않았습니다.";
+});
+
+contactForm?.addEventListener("input", (event) => {
+  const input = event.target;
+  if (!(input instanceof HTMLInputElement || input instanceof HTMLTextAreaElement)) return;
+
+  const error = contactForm.querySelector(`#${input.id}-error`);
+  if (!error) return;
+
+  input.removeAttribute("aria-invalid");
+  error.textContent = "";
+  contactForm.querySelector(".form-feedback").textContent = "";
+});

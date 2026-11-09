@@ -203,13 +203,35 @@
         <div class="contact-card">
           <div class="contact-content">
             <p class="eyebrow">HAVE A GOOD IDEA?</p>
-            <h2 id="contact-title">좋은 이야기는<br />언제나 환영이에요<span class="accent">.</span></h2>
-            <p>새로운 프로젝트, 재미있는 협업, 가벼운 인사까지<br class="desktop-break" />편하게 연락 주세요. 함께할 방법을 찾아볼게요.</p>
+            <h2 id="contact-title">좋은 이야기는 언제나 환영이에요<span class="accent">.</span></h2>
+            <p>
+              새로운 프로젝트 제안부터 재미있는 협업, 가벼운 인사까지
+              편하게 연락 주세요. 함께할 방법을 찾아볼게요.
+            </p>
             <a class="button button-light" href="mailto:hello@nahyeonoh.dev">
               hello@nahyeonoh.dev
               <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h12m-5-5 5 5-5 5" /></svg>
             </a>
           </div>
+          <form class="contact-form" novalidate>
+            <div class="form-field">
+              <label for="contact-name">이름</label>
+              <input id="contact-name" name="name" type="text" autocomplete="name" required aria-describedby="contact-name-error" />
+              <span class="field-error" id="contact-name-error"></span>
+            </div>
+            <div class="form-field">
+              <label for="contact-email">이메일</label>
+              <input id="contact-email" name="email" type="email" autocomplete="email" required aria-describedby="contact-email-error" />
+              <span class="field-error" id="contact-email-error"></span>
+            </div>
+            <div class="form-field">
+              <label for="contact-message">메시지</label>
+              <textarea id="contact-message" name="message" rows="4" required aria-describedby="contact-message-error"></textarea>
+              <span class="field-error" id="contact-message-error"></span>
+            </div>
+            <button class="button button-light contact-submit" type="submit">제출하기</button>
+            <p class="form-feedback" aria-live="polite" role="status"></p>
+          </form>
           <span class="contact-decoration" aria-hidden="true">✳</span>
           <span class="contact-note" aria-hidden="true">LET'S MAKE<br />SOMETHING<br />MEANINGFUL.</span>
         </div>
@@ -222,11 +244,5 @@
       <a class="footer-link" href="https://career.rememberapp.co.kr/job/postings" target="_blank" rel="noopener noreferrer">Remember</a>
       <span>© <span id="current-year"></span> Nahyeon Oh</span>
     </footer>
-
-    <script>
-      // Update the current year in the footer
-      const currentYear = new Date().getFullYear();
-      document.getElementById('current-year').textContent = currentYear;
-    </script>
   </body>
 </html>
