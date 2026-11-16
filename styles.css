@@ -8,6 +8,8 @@
   --line: #e4e2d9;
   --accent: #bded6e;
   --accent-ink: #344319;
+  --rose: #c76578;
+  --rose-glow: rgb(199 101 120 / 17%);
   --shadow: 0 24px 70px rgb(34 39 30 / 12%);
   --contact-surface: #252920;
   --contact-field: #2e332a;
@@ -37,6 +39,8 @@
   --line: #363931;
   --accent: #bded6e;
   --accent-ink: #273118;
+  --rose: #f09aaa;
+  --rose-glow: rgb(240 154 170 / 20%);
   --shadow: 0 24px 70px rgb(0 0 0 / 28%);
   --contact-surface: #11130f;
   --contact-field: #20231d;
