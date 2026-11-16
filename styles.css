@@ -9,6 +9,16 @@
   --accent: #bded6e;
   --accent-ink: #344319;
   --shadow: 0 24px 70px rgb(34 39 30 / 12%);
+  --contact-surface: #252920;
+  --contact-field: #2e332a;
+  --contact-border: #51564a;
+  --contact-text: #f6f5f0;
+  --contact-muted: #afb2a8;
+  --project-sprout: #dce9cc;
+  --project-morrow: #e8dff0;
+  --project-tide: #d9e8e7;
+  --project-index: rgb(32 35 31 / 55%);
+  --project-action: rgb(255 255 255 / 70%);
   font-family: "Manrope", "Noto Sans KR", sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -28,6 +38,16 @@
   --accent: #bded6e;
   --accent-ink: #273118;
   --shadow: 0 24px 70px rgb(0 0 0 / 28%);
+  --contact-surface: #11130f;
+  --contact-field: #20231d;
+  --contact-border: #41463a;
+  --contact-text: #f3f2eb;
+  --contact-muted: #b4b8aa;
+  --project-sprout: #394333;
+  --project-morrow: #443b4c;
+  --project-tide: #344846;
+  --project-index: rgb(243 242 235 / 72%);
+  --project-action: rgb(25 27 24 / 78%);
 }
 
 * {

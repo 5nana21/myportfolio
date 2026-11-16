@@ -5,6 +5,7 @@ This project is a personal portfolio website.
 - Introduce my career
 - Display portfolio cards
 - Receive feedback by email
+- Switch between light and dark themes with a saved preference
 ## Technologies
 - HTML
 - CSS

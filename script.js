@@ -1,4 +1,5 @@
 const themeToggle = document.querySelector(".theme-toggle");
+const themeColorMeta = document.querySelector('meta[name="theme-color"]');
 const filterButtons = document.querySelectorAll(".filter-button");
 const projectCards = document.querySelectorAll(".project-card");
 const visibleCount = document.querySelector("#visible-count");
@@ -12,6 +13,24 @@ const dialogTags = projectDialog?.querySelector(".dialog-tags");
 const dialogHighlights = projectDialog?.querySelector(".dialog-highlights ul");
 const dialogClose = projectDialog?.querySelector(".dialog-close");
 const contactForm = document.querySelector(".contact-form");
+const themeStorageKey = "portfolio-theme";
+
+const applyTheme = (theme) => {
+  const isDark = theme === "dark";
+  document.documentElement.dataset.theme = theme;
+  themeToggle?.setAttribute("aria-label", isDark ? "라이트 모드로 전환" : "다크 모드로 전환");
+  themeToggle?.setAttribute("aria-pressed", String(isDark));
+  if (themeColorMeta) themeColorMeta.content = isDark ? "#191b18" : "#f4f3ef";
+};
+
+let savedTheme = "light";
+try {
+  const storedTheme = localStorage.getItem(themeStorageKey);
+  if (storedTheme === "light" || storedTheme === "dark") savedTheme = storedTheme;
+} catch (error) {
+  console.warn("저장된 테마를 불러오지 못했습니다.", error);
+}
+applyTheme(savedTheme);
 
 const projectDetails = [
   {
@@ -51,9 +70,13 @@ if (currentYear) {
 }
 
 themeToggle?.addEventListener("click", () => {
-  const isDark = document.documentElement.dataset.theme !== "dark";
-  document.documentElement.dataset.theme = isDark ? "dark" : "light";
-  themeToggle.setAttribute("aria-label", isDark ? "라이트 모드로 전환" : "다크 모드로 전환");
+  const theme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+  applyTheme(theme);
+  try {
+    localStorage.setItem(themeStorageKey, theme);
+  } catch (error) {
+    console.warn("테마 설정을 저장하지 못했습니다.", error);
+  }
 });
 
 filterButtons.forEach((button) => {
